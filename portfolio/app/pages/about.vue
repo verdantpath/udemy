@@ -7,15 +7,10 @@
   </div>
 </template>
 <script setup>
-// definePageMeta({
-//   layout: "another",
-// })
-function enableCustomLayout() {
-  setPageLayout('another')
-}
-definePageMeta({
-  layout: false,
-});
+useHead({
+  title: 'About',
+})
+
 </script>
 <style>
 
