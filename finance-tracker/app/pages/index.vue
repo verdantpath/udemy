@@ -13,6 +13,13 @@
     <Trend color="green" title="Investments" :amount="4000" :last-amount="3000" :loading="false" />
     <Trend color="red" title="Saving" :amount="4000" :last-amount="5000" :loading="false" />
   </section>
+
+  <section>
+    <Transaction />
+    <Transaction />
+    <Transaction />
+    <Transaction />
+  </section>
 </template>
 <script setup>
 import { transactionViewOptions } from '~/constants'
