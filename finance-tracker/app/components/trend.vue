@@ -33,7 +33,7 @@ const percentageTrend = computed(() => {
   const lower = Math.min(props.amount, props.lastAmount)
   const ratio = ((bigger - lower) / lower) * 100
 
-  console.log(bigger, lower, ratio, Math.ceil(ratio))
+  // console.log(bigger, lower, ratio, Math.ceil(ratio))
 
   return `${Math.ceil(ratio)}%`
 })
