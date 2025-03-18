@@ -16,6 +16,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
     "@nuxtjs/supabase": "^1.4.6",
     "zod": "^3.24.2"
   }
