@@ -4,7 +4,7 @@
       <template #header>
         Add Transaction
       </template>
-      <UForm :state="state" :schema="schema" ref="form" @submit.prevent="save">
+      <UForm :state="state" :schema="schema" ref="form" @submit="save">
         <UFormGroup :required="true" label="Transaction Type" name="type" class="mb-4">
           <USelect placeholder="Select the Transaction Type" :options="types" v-model="state.type" />
         </UFormGroup>
