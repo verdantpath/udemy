@@ -70,7 +70,7 @@ const save = async () => {
   isLoading.value = true 
   try {
     const { error } = await supabase.from('transactions')
-      .upsert({...state})
+      .upsert({...state.value})
 
       if (!error) {
       toast.add({
@@ -86,7 +86,8 @@ const save = async () => {
     toast.add({
       title: 'Transaction not saved',
       description: e.message,
-      icon: 'i-heroicons-exclamation-circle'
+      icon: 'i-heroicons-exclamation-circle',
+      color: 'red'
     })
   } finally {
     isLoading.value = false
@@ -113,7 +114,8 @@ const isOpen = computed({
   get: () => props.modelValue,
   set: (value) => {
     if (!value) resetForm()
-    emit('update:modelValue', value)}
+    emit('update:modelValue', value)
+  }
 })
 </script>
 <style>
