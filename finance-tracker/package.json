@@ -19,6 +19,7 @@
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
     "@nuxtjs/supabase": "^1.4.6",
+    "date-fns": "^4.1.0",
     "zod": "^3.24.2"
   }
 }
