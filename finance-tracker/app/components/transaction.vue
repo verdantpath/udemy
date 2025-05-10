@@ -33,7 +33,7 @@
   const { currency } = useCurrency(props.transaction.amount, 'USD')
 
   const isLoading = ref(false)
-  const toast = useToast()
+  const { toastSuccess, toastError } = useAppToast()
 
   const supabase = useSupabaseClient()
 
@@ -45,17 +45,13 @@
         .from('transactions')
         .delete()
         .eq('id', props.transaction.id)
-      toast.add({
-        title: 'Transaction deleted', 
-        icon: 'i-heroicons-check-circle',
-        color: 'green'
+      toastSuccess({
+        title: 'Transaction deleted'
       })
       emit('deleted', props.transaction.id)
     } catch (error) {
-      toast.add({
-        title: 'Something went wrong', 
-        icon: 'i-heroicons-exclamation-circle',
-        color: 'red'
+      toastError({
+        title: 'Something went wrong'
       })
     } finally {
       isLoading.value = false
