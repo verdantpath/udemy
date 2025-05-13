@@ -25,3 +25,4 @@ logs
 
 # files
 seed.mjs
+app/components/-diff-transaction-modal.vue
