@@ -22,11 +22,14 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 
+
 // We need to get the actual avatar URL
 const { toastSuccess, toastError } = useAppToast()
 
 const uploading = ref(false)
 const fileInput = ref() // Reference to an input with ref="fileInput" attribute
+
+console.log(user.value)
 
 const saveAvatar = async () => {
   // 1. Get the uploaded file
@@ -48,10 +51,24 @@ const saveAvatar = async () => {
   try {
     uploading.value = true
     // 1. Grab the current avatar URL
+    const currentAvatarUrl = user.value.user_metadata?.avatar_url
+
     // 2. Upload the image to avatars bucket
+    const { error } = await supabase.storage.from('avatars')
+      .upload(fileName, file)
+
+      if (error) throw error
+
     // 3. Update the user metadata with the avatar URL
+    await supabase.auth.updateUser({
+      data: {
+        avatar_url: fileName
+      }
+    })
+
     // 4. (OPTIONALLY) remove the old avatar file
     // 5. Reset the file input
+    fileInput.value.input.value = null
 
     toastSuccess({
       title: 'Avatar uploaded',
