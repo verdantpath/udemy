@@ -22,7 +22,7 @@
       </div>
     </div>
     <div>
-      <TransactionModal v-model="isOpen" @saved="refresh()" />
+      <TransactionModal v-model="isOpen" @saved="refresh()"  />
       <UButton icon="i-heroicons-plus-circle" color="white" variant="solid" label="Add" @click="isOpen = true" />
     </div>
   </section>
@@ -30,7 +30,7 @@
   <section v-if="!pending">
     <div v-for="(transactionsOnDay, date) in byDate" :key="date" class="mb-10">
       <DailyTransactionSummary :date="date" :transactions="transactionsOnDay" />
-      <Transaction v-for="transaction in transactionsOnDay" :key="transaction.id" :transaction="transaction" @deleted="refresh()" />
+      <Transaction v-for="transaction in transactionsOnDay" :key="transaction.id" :transaction="transaction" @deleted="refresh()" @edited="refresh()" />
     </div>
   </section>
   <section v-else>
