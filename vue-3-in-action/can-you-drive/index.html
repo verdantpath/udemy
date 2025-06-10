@@ -42,7 +42,7 @@
       const { createApp, ref, computed } = Vue;
       const App = {
         setup() {
-          let message = ref("PDX Sliders");
+          let message = ref("Oregon City");
           let age = ref(null);
           let canDrive = computed(() => {
             console.log("@@ computed ran");
@@ -51,7 +51,7 @@
 
           setTimeout(() => {
             console.log("@@ 5 secs");
-            message.value = "Quiznos";
+            message.value = "Milwaukie";
             age.value = 47;
             console.log(message.value, age.value);
           }, 5000);
