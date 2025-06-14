@@ -4,6 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Game</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/normalize.css/normalize.css"
+    />
+    <style type="text/css">
+      body {
+        font-family: monospace;
+        padding: 20px;
+        font-size: 2em;
+      }
+      .can {
+        color: green;
+      }
+      .cant {
+        color: red;
+      }
+    </style>
+    <script src="https://unpkg.com/vue@3.4.0"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <h1>Your score:{{ yourScore }}</h1>
+      <input type="text" v-model="yourAnswer" />
+    </div>
+    <script>
+      const { createApp, ref, computed } = Vue;
+      const App = {
+        setup() {
+          const questions = ref(["What is 1 + 1?", "What is 2 x 2?"]);
+          const answers = ref(["2", "4"]);
+          const yourAnswer = ref("");
+          const yourScore = ref("");
+          return {
+            questions,
+            answers,
+            yourAnswer,
+            yourScore,
+          };
+        },
+      };
+      createApp(App).mount("#app");
+    </script>
+  </body>
 </html>
