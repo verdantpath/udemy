@@ -27,20 +27,32 @@
     <div id="app">
       <h1>Your score:{{ yourScore }}</h1>
       <input type="text" v-model="yourAnswer" />
+      <!-- <p>{{ question }}</p> -->
     </div>
     <script>
       const { createApp, ref, computed } = Vue;
       const App = {
         setup() {
-          const questions = ref(["What is 1 + 1?", "What is 2 x 2?"]);
-          const answers = ref(["2", "4"]);
+          const questions = [
+            "How much is 2+2",
+            "How much is 3*5+1",
+            "What is the rest from 3/1",
+          ];
+          const answers = ["4", "16", "1"];
           const yourAnswer = ref("");
           const yourScore = ref("");
+          const score = ref(0);
+          const current = ref(0);
+          const answer = ref(null);
+          const question = computed(() => {
+            return questions[current.value];
+          });
           return {
             questions,
             answers,
             yourAnswer,
             yourScore,
+            // question,
           };
         },
       };
