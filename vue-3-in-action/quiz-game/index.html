@@ -25,6 +25,7 @@
   </head>
   <body>
     <div id="app">
+      <div>{{ question }}</div>
       <h1>Your score:{{ yourScore }}</h1>
       <input type="text" v-model="yourAnswer" />
       <!-- <p>{{ question }}</p> -->
@@ -47,11 +48,19 @@
           const question = computed(() => {
             return questions[current.value];
           });
+          const rightAnswer = computed(() => {
+            return answers[current.value];
+          });
+          const areWeDone = computed(() => {
+            return questions.length === current.value;
+          });
+
+          const interval = setInterval(check, 5000);
           return {
-            questions,
-            answers,
-            yourAnswer,
-            yourScore,
+            question,
+            answer,
+            areWeCone,
+            score,
             // question,
           };
         },
