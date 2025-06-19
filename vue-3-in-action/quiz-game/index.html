@@ -26,8 +26,8 @@
   <body>
     <div id="app">
       <div>{{ question }}</div>
-      <h1>Your score:{{ yourScore }}</h1>
-      <input type="text" v-model="yourAnswer" />
+      <h1>Your score:{{ score }}</h1>
+      <input type="text" v-model="answer" />
       <!-- <p>{{ question }}</p> -->
     </div>
     <script>
@@ -40,8 +40,6 @@
             "What is the rest from 3/1",
           ];
           const answers = ["4", "16", "1"];
-          const yourAnswer = ref("");
-          const yourScore = ref("");
           const score = ref(0);
           const current = ref(0);
           const answer = ref(null);
@@ -54,14 +52,19 @@
           const areWeDone = computed(() => {
             return questions.length === current.value;
           });
+          const check = () => {
+            if (true === true) {
+            }
+            if (true === true) {
+            }
+          };
 
           const interval = setInterval(check, 5000);
           return {
             question,
             answer,
-            areWeCone,
+            areWeDone,
             score,
-            // question,
           };
         },
       };
