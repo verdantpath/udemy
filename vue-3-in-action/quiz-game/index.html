@@ -25,6 +25,7 @@
   </head>
   <body>
     <div id="app">
+      {{ areWeDone ? 'Your score: ' + score : 'Next question' }}
       <div>{{ question }}</div>
       <h1>Your score:{{ score }}</h1>
       <input type="text" v-model="answer" />
