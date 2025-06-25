@@ -27,7 +27,7 @@
     <div id="app">
       {{ areWeDone ? 'Your score: ' + score : 'Next question' }}
       <div>{{ question }}</div>
-      <h1>Your score:{{ score }}</h1>
+      <!-- <h1>Your score:{{ score }}</h1> -->
       <input type="text" v-model="answer" />
       <!-- <p>{{ question }}</p> -->
     </div>
@@ -55,9 +55,13 @@
           });
           const check = () => {
             console.log("Checked");
-            if (true === true) {
+            if (answer.value === rightAnswer.value) {
+              score.value++;
             }
-            if (true === true) {
+            answer.value = null;
+            current.value++;
+            if (areWeDone.value) {
+              clearInterval(interval);
             }
           };
 
