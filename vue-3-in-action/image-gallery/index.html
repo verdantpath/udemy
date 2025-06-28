@@ -62,7 +62,7 @@
     <div id="app">
       <!-- Form for Adding Photos -->
       <form @submit.prevent="addPhoto">
-        <input placeholder="Enter image URL" />
+        <input placeholder="Enter image URL" v-model="newPhotoUrl" />
         <button type="submit">Add Photo</button>
       </form>
 
@@ -87,15 +87,25 @@
           // Keep track of the list of photos
           const photos = ref([]);
           // We need a ref for the currently entered URL
+          const newPhotoUrl = ref("");
           const addPhoto = () => {
             console.log("add photo click");
             // Adding photo logic goes here
+            const photo = {
+              id: photos.value.length + 1,
+              url: newPhotoUrl.value,
+              isFavorite: false,
+            };
+            if (newPhotoUrl.value !== "") {
+              photos.value.push(photo);
+              newPhotoUrl.value = "";
+            }
           };
           const toggleFavorite = () => {
             // Favorite toggling logic
           };
 
-          return { addPhoto, photos };
+          return { addPhoto, photos, newPhotoUrl };
         },
       };
       createApp(App).mount("#app");
