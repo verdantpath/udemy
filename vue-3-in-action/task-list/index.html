@@ -101,6 +101,9 @@
           onMounted(() => {
             console.log("mounted");
           });
+          beforeMount(() => {
+            console.log("before mount");
+          });
           return {};
         },
       };
