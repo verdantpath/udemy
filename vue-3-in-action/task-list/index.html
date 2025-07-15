@@ -73,7 +73,7 @@
       <input placeholder="Filter tasks..." />
 
       <!-- If there no tasks -->
-      <div>
+      <div v-if="tasks.length === 0">
         <p>No tasks found. Try changing the filter or add some tasks!</p>
       </div>
 
@@ -98,6 +98,14 @@
 
       const App = {
         setup() {
+          const tasks = ref([
+            {
+              id: 1,
+              description: "Buy groceries",
+              priority: "High",
+              done: false,
+            },
+          ]);
           const newTaskInput = ref(null);
           onMounted(() => {
             newTaskInput.value.focus();
@@ -105,7 +113,7 @@
           onBeforeMount(() => {
             console.log("before mount");
           });
-          return { newTaskInput };
+          return { newTaskInput, tasks };
         },
       };
 
