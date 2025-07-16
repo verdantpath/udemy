@@ -80,12 +80,12 @@
       <div>
         <h3>Your Tasks</h3>
         <!-- This is a list of tasks -->
-        <div>
+        <div v-for="task in tasks" :key="task.id">
           <div>
             <!-- Is task done? -->
-            <input type="checkbox" />
+            <input type="checkbox" v-model="done" />
             <!-- Task description -->
-            <span></span>
+            <span>{{ task.description }}</span>
           </div>
           <!-- Removing a task -->
           <button class="remove-button">✖</button>
