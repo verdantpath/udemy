@@ -80,10 +80,14 @@
       <div>
         <h3>Your Tasks</h3>
         <!-- This is a list of tasks -->
-        <div v-for="task in tasks" :key="task.id">
+        <div
+          v-for="task in tasks"
+          :key="task.id"
+          :class="{'task': true, completed: task.done, [task.priority.toLowerCase()]: true}"
+        >
           <div>
             <!-- Is task done? -->
-            <input type="checkbox" v-model="done" />
+            <input type="checkbox" v-model="task.done" />
             <!-- Task description -->
             <span>{{ task.description }}</span>
           </div>
@@ -103,7 +107,7 @@
               id: 1,
               description: "Buy groceries",
               priority: "High",
-              done: false,
+              done: true,
             },
           ]);
           const newTaskInput = ref(null);
