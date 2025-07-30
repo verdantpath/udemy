@@ -59,8 +59,12 @@
     <div id="app">
       <form>
         <!-- Adding tasks form -->
-        <input ref="newTaskInput" placeholder="Add new task" />
-        <select>
+        <input
+          ref="newTaskInput"
+          placeholder="Add new task"
+          v-model="newTask"
+        />
+        <select v-model="newPriority">
           <option disabled value="">Select priority</option>
           <option>High</option>
           <option>Medium</option>
@@ -112,6 +116,7 @@
           ]);
           const newTaskInput = ref(null);
           const newTask = ref("");
+          const newPriority = ref("");
           onMounted(() => {
             newTaskInput.value.focus();
           });
