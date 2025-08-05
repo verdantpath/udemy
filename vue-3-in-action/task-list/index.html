@@ -57,7 +57,7 @@
 
   <body>
     <div id="app">
-      <form>
+      <form @submit.prevent="addTask">
         <!-- Adding tasks form -->
         <input
           ref="newTaskInput"
@@ -120,9 +120,16 @@
           onMounted(() => {
             newTaskInput.value.focus();
           });
-          onBeforeMount(() => {
-            console.log("before mount");
-          });
+          const addTask = () => {
+            if (newTask.value !== "" && newPriority.value !== "") {
+              tasks.value.push({
+                id: tasks.value.length + 1,
+                description: newTask.value,
+                priority: newPriority.value,
+                done: false,
+              });
+            }
+          };
           return { newTaskInput, tasks };
         },
       };
