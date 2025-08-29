@@ -122,15 +122,17 @@
           });
           const addTask = () => {
             if (newTask.value !== "" && newPriority.value !== "") {
-              tasks.value.push({
+              tasks.value.unshift({
                 id: tasks.value.length + 1,
                 description: newTask.value,
                 priority: newPriority.value,
                 done: false,
               });
+              newTask.value = "";
+              newPriority.value = "";
             }
           };
-          return { newTaskInput, tasks };
+          return { newTaskInput, tasks, addTask, newTask, newPriority };
         },
       };
 
