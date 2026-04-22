@@ -7,8 +7,9 @@
         v-for="i in 7"
         :key="i"
         title="Vue conference 2026"
-        when="01-01-2026"
+        when="05-01-2026"
         description="Conference about Vue and JavaScript"
+        @register="console.log('Registered')"
       />
     </section>
     <h2 class="text-2xl font-medium">Your Bookings</h2>
