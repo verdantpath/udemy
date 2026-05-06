@@ -13,9 +13,17 @@
       />
     </section>
     <h2 class="text-2xl font-medium">Your Bookings</h2>
+    <BookingItem
+      :key="i"
+      title="XYZ"
+      when="06-01-2026"
+      description="pending"
+      @register="console.log('Registered')"
+    />
   </main>
 </template>
 
 <script setup>
 import EventCard from '@/components/EventCard.vue'
+import BookingItem from '@/components/BookingItem.vue'
 </script>
